@@ -13,7 +13,7 @@ import java.util.Random;
  * @author Noah McElroy
  */
 public class GuessingGameServiceLayerImpl {
-    int createAnswer(){
+    String createAnswer(){
         HashSet<Integer> set=new HashSet();  
         Random rand = new Random();
         String answer ="";
@@ -24,6 +24,6 @@ public class GuessingGameServiceLayerImpl {
                 answer+= randomInt;
             }
         }
-        return Integer.parseInt(answer);
+        return answer;
     }
 }

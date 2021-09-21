@@ -5,12 +5,18 @@
  */
 package Main.Service;
 
+import Main.CTO.Game;
+
 /**
  *
  * @author Noah McElroy
  */
 public interface GuessingGameServiceLayer {
-    int createAnswer();//creates 4 digit number user random number and find way to have no repeating numbers
+    String createAnswer();//creates 4 digit number user random number and find way to have no repeating numbers
     
-    void compareResults(String answer);//setting e and p
+    void compareResults(String guess);//setting e and p
+    
+    Game addGame(int id, Game game);
+    
+    Game deleteGame(int id);
 }
