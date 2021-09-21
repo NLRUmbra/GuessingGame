@@ -13,6 +13,24 @@ public class Game {
     private int id;
     private String answer;
     private boolean finished;
+    private int exactMatch;
+    private int partialMatch;
+
+    public int getExactMatch() {
+        return exactMatch;
+    }
+
+    public void setExactMatch(int exactMatch) {
+        this.exactMatch = exactMatch;
+    }
+
+    public int getPartialMatch() {
+        return partialMatch;
+    }
+
+    public void setPartialMatch(int partialMatch) {
+        this.partialMatch = partialMatch;
+    }
 
     public int getId() {
         return id;

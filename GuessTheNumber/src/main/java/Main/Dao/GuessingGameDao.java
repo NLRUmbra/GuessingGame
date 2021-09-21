@@ -5,11 +5,14 @@
  */
 package Main.Dao;
 
+import Main.CTO.Game;
+import java.util.List;
+
 /**
  *
  * @author Noah McElroy
  */
-public class GuessingGameDao {
+public interface GuessingGameDao {
     Game addGame(int id, Game game);
     
     Game deleteGame(int id);
