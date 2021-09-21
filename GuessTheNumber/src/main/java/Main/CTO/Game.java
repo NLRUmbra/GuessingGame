@@ -13,28 +13,10 @@ public class Game {
     private int id;
     private String answer;
     private boolean finished;
-    private int exactMatch;
-    private int partialMatch;
 
-    public Game(int id, String answer) {
-        this.id = id;
-        this.answer = answer;
-    }
 
-    public int getExactMatch() {
-        return exactMatch;
-    }
-
-    public void setExactMatch(int exactMatch) {
-        this.exactMatch = exactMatch;
-    }
-
-    public int getPartialMatch() {
-        return partialMatch;
-    }
-
-    public void setPartialMatch(int partialMatch) {
-        this.partialMatch = partialMatch;
+    public Game() {
+        finished = false;
     }
 
     public int getId() {

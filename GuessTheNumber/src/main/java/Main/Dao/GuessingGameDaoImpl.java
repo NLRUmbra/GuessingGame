@@ -18,7 +18,7 @@ public class GuessingGameDaoImpl implements GuessingGameDao{
     private static final List<Game> games = new ArrayList<>();
 
     @Override
-    public Game add(Game game) {
+    public Game add(Game game, String answer) {
 
         int nextId = games.stream()
                 .mapToInt(i -> i.getId())
@@ -26,6 +26,7 @@ public class GuessingGameDaoImpl implements GuessingGameDao{
                 .orElse(0) + 1;
 
         game.setId(nextId);
+        game.setAnswer(answer);
         games.add(game);
         return game;
     }

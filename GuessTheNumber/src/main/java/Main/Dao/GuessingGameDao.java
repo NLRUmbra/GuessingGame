@@ -9,7 +9,7 @@ import java.util.List;
  * @author Noah McElroy
  */
 public interface GuessingGameDao {
-    Game add(Game game);
+    Game add(Game game, String answer);
 
     List<Game> getAll();
 

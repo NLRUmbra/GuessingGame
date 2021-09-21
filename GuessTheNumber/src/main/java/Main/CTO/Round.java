@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main.Service;
-
-import Main.CTO.Game;
+package Main.CTO;
 
 /**
  *
- * @author Noah McElroy
+ * @author Daniel
  */
-public interface GuessingGameServiceLayer {
-    Game addGame(int id, Game game);
+public class Round {
     
-    Game deleteGame(int id);
-
 }

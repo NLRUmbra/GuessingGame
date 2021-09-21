@@ -5,24 +5,45 @@
  */
 package Main.Controller;
 
+import Main.CTO.Game;
 import Main.Dao.GuessingGameDao;
-import Main.Service.GuessingGameServiceLayer;
-import Main.UI.UserIO;
-import Main.UI.UserIOConsoleImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Noah McElroy
  */
+@RestController
+@RequestMapping("/api")
 public class GuessingGameController {
-    //private AddressBookView view;
-    private UserIO io = new UserIOConsoleImpl();
-    private GuessingGameServiceLayer service;
-
-    public GuessingGameController(GuessingGameServiceLayer service) {
-        //this.view = view;
-        this.service = service;
+    
+    private final GuessingGameDao dao;
+    
+    public GuessingGameController(GuessingGameDao dao){
+        this.dao = dao;
     }
+    
+    @PostMapping("/begin")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Game Create(){
+        Game newGame = new Game();
+        dao.addGame(0, newGame);
+        return newGame;
+    }
+    
+    @PostMapping("/guess");
+//    //private AddressBookView view;
+//    private UserIO io = new UserIOConsoleImpl();
+//    private GuessingGameServiceLayer service;
+//
+//    public GuessingGameController(GuessingGameServiceLayer service) {
+//        //this.view = view;
+//        this.service = service;
+//    }
     /*public void run() {
         io.print("What would you like to do?");
         io.print("1: Create new game");
