@@ -15,7 +15,7 @@ import Main.Service.GuessingGameServiceLayerImpl;
  *
  * @author Noah McElroy
  */
-/*import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -24,9 +24,9 @@ public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
-}*/
+}
 
-public class App{
+/*public class App{
     public static void main(String[] args){
         // Instantiate the DAO
         GuessingGameDao myDao = new GuessingGameDaoImpl();
@@ -37,4 +37,4 @@ public class App{
         // Kick off the Controller
         controller.run();
     }
-}
+}*/

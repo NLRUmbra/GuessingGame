@@ -14,11 +14,27 @@ import java.util.List;
  * @author Noah McElroy
  */
 public interface GuessingGameDao {
-    Game addGame(int id, Game game);
+    Game add(Game game);
+
+    List<Game> getAll();
+
+    Game findById(int id);
+
+    // true if item exists and is updated
+    boolean update(Game game);
+
+    // true if item exists and is deleted
+    boolean deleteById(int id);
+    
+    
+    
+    
+    
+    /*Game addGame(int id, Game game);
     
     Game deleteGame(int id);
     
     //Game updateGame(int id);
     
-    List<Game> listAllGames();
+    List<Game> listAllGames();*/
 }

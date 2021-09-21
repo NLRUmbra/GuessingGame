@@ -16,6 +16,11 @@ public class Game {
     private int exactMatch;
     private int partialMatch;
 
+    public Game(int id, String answer) {
+        this.id = id;
+        this.answer = answer;
+    }
+
     public int getExactMatch() {
         return exactMatch;
     }

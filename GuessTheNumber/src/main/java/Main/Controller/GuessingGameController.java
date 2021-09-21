@@ -23,7 +23,7 @@ public class GuessingGameController {
         //this.view = view;
         this.service = service;
     }
-    public void run() {
+    /*public void run() {
         io.print("What would you like to do?");
         io.print("1: Create new game");
         io.print("2: Attempt to solve a game");
@@ -42,12 +42,21 @@ public class GuessingGameController {
         }
                 
     }
-   
-    public int selectedGame(){
+    private void createGame(){
+        String answer  =  service.createAnswer();
+        io.
+        
+    }
+    private int selectedGame(){
         return io.readInt("enter the id of the game you want to try");
     }
     
-    public void solvingGame(){
+    private void solvingGame(int id){
+        boolean flag = false;
+        while(flag==false){
+            String guess = io.readString("Enter your guess which is 4 numbers long and has no repeating numbers");
+            flag = service.compareResults(guess);
+        }
+    }*/
         
-    }
 }
