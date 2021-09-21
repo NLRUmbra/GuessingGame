@@ -9,6 +9,6 @@ package Main.Service;
  *
  * @author Noah McElroy
  */
-public class GuessingGameServiceLayer {
+public interface GuessingGameServiceLayer {
     
 }
