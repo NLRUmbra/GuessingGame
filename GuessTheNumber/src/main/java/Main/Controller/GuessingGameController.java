@@ -5,10 +5,26 @@
  */
 package Main.Controller;
 
+import Main.Dao.GuessingGameDao;
+import Main.UI.UserIO;
+import Main.UI.UserIOConsoleImpl;
+
 /**
  *
  * @author Noah McElroy
  */
 public class GuessingGameController {
-    
+    //private AddressBookView view;
+    private UserIO io = new UserIOConsoleImpl();
+    private GuessingGameDao dao;
+
+    public GuessingGameController(GuessingGameDao dao) {
+        //this.view = view;
+        this.dao = dao;
+    }
+    public void run() {
+ 
+    }
+        //exitMessage();
+            
 }

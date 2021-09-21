@@ -10,5 +10,7 @@ package Main.Service;
  * @author Noah McElroy
  */
 public interface GuessingGameServiceLayer {
+    int createAnswer();//creates 4 digit number user random number and find way to have no repeating numbers
     
+    void compareResults(String answer);//setting e and p
 }
