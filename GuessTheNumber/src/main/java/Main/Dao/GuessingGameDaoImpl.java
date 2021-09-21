@@ -62,3 +62,4 @@ public class GuessingGameDaoImpl implements GuessingGameDao{
     public boolean deleteById(int id) {
         return games.removeIf(i -> i.getId() == id);
     }
+}
