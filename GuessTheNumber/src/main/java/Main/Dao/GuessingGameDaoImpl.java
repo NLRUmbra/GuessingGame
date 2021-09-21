@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Noah McElroy
  */
 public class GuessingGameDaoImpl implements GuessingGameDao{
-    private Map<int, Game> gameList;
+    private Map<Integer, Game> gameList =new HashMap<>();
 
     public GuessingGameDaoImpl() {
     }
@@ -31,11 +31,11 @@ public class GuessingGameDaoImpl implements GuessingGameDao{
         return gameList.remove(id);
     }
 
-    @Override
+    /*@Override
     public Game updateGame(int id) {
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
     @Override
     public List<Game> listAllGames() {

@@ -18,7 +18,7 @@ public interface GuessingGameDao {
     
     Game deleteGame(int id);
     
-    Game updateGame(int id);
+    //Game updateGame(int id);
     
     List<Game> listAllGames();
 }
