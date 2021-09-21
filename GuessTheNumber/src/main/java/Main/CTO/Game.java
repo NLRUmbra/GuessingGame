@@ -5,6 +5,9 @@
  */
 package Main.CTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Noah McElroy
@@ -13,16 +16,31 @@ public class Game {
     private int id;
     private String answer;
     private boolean finished;
+    
+    private List<Round> listOfRounds;
+
+    public List<Round> getListOfRounds() {
+        return listOfRounds;
+    }
+
+    public void setListOfRounds(List<Round> listOfRounds) {
+        this.listOfRounds = listOfRounds;
+        
+    }
 
 
     public Game() {
         finished = false;
+        this.listOfRounds = new ArrayList<>();
     }
 
     public int getId() {
         return id;
     }
-
+    
+    public void addRound(Round round){
+        this.listOfRounds.add(round);
+    }
     public void setId(int id) {
         this.id = id;
     }

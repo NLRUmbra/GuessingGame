@@ -6,9 +6,13 @@
 package Main.Controller;
 
 import Main.CTO.Game;
+import Main.CTO.Round;
 import Main.Dao.GuessingGameDao;
+import java.util.HashSet;
+import java.util.Random;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class GuessingGameController {
     
-    private final GuessingGameDao dao;
+    private GuessingGameDao dao;
     
     public GuessingGameController(GuessingGameDao dao){
         this.dao = dao;
@@ -31,53 +35,61 @@ public class GuessingGameController {
     @ResponseStatus(HttpStatus.CREATED)
     public Game Create(){
         Game newGame = new Game();
-        dao.addGame(0, newGame);
+        dao.add(newGame, createAnswer());
         return newGame;
     }
     
-    @PostMapping("/guess");
-//    //private AddressBookView view;
-//    private UserIO io = new UserIOConsoleImpl();
-//    private GuessingGameServiceLayer service;
-//
-//    public GuessingGameController(GuessingGameServiceLayer service) {
-//        //this.view = view;
-//        this.service = service;
-//    }
-    /*public void run() {
-        io.print("What would you like to do?");
-        io.print("1: Create new game");
-        io.print("2: Attempt to solve a game");
-        
-        int choice  =  io.readInt("Please select from the above choices.", 1, 2);
-        
-        switch(choice){
-            case 1:
-                
-                break;
-            case 2: 
-                int game = selectedGame();
-                break;
-            default:
-                break;
+    @PostMapping("/guess")
+    public Round guess(@RequestBody int gameId, @RequestBody String g){
+        Game thisGame = dao.findById(gameId);
+        if (compareResults(thisGame,g)){
+            thisGame.setFinished(true);
         }
-                
-    }
-    private void createGame(){
-        String answer  =  service.createAnswer();
-        io.
-        
-    }
-    private int selectedGame(){
-        return io.readInt("enter the id of the game you want to try");
+        return thisGame.getListOfRounds().get(gameId)
     }
     
-    private void solvingGame(int id){
-        boolean flag = false;
-        while(flag==false){
-            String guess = io.readString("Enter your guess which is 4 numbers long and has no repeating numbers");
-            flag = service.compareResults(guess);
+
+
+    public String createAnswer(){
+        HashSet<Integer> set=new HashSet();  
+        Random rand = new Random();
+        String answer ="";
+        while(set.size() < 4){
+            int randomInt = rand.nextInt(10);
+            if (!set.contains(randomInt)){
+                set.add(randomInt);
+                answer+= randomInt;
+            }
         }
-    }*/
+        return answer.toString();
+    }
+
+
+    public boolean compareResults(Game game, String guess) {
+        //{e,p}
+        int[] result = {0,0};
+        String localAnswer = game.getAnswer();
+        for (int i = 0 ; i < localAnswer.length();i++){
+            int position = localAnswer.indexOf(guess.charAt(i));
+            if (position != -1){
+                if (position == i){
+                    result[0]++;
+                }
+                else{
+                    result[1]++;
+                }
+            }
+        }
+        
+        Round newRound = new Round(result[0],result[1],guess);
+        game.addRound(newRound);
+        
+        if (result[0] == 4){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
         
 }

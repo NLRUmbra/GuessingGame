@@ -25,16 +25,3 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 }
-
-/*public class App{
-    public static void main(String[] args){
-        // Instantiate the DAO
-        GuessingGameDao myDao = new GuessingGameDaoImpl();
-        // Instantiate the Service Layer and wire the DAO and Audit DAO into it
-        GuessingGameServiceLayer myService = new GuessingGameServiceLayerImpl(myDao);
-        // Instantiate the Controller and wire the Service Layer into it
-        GuessingGameController controller = new GuessingGameController(myService);
-        // Kick off the Controller
-        controller.run();
-    }
-}*/
