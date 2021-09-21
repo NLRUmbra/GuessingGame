@@ -14,9 +14,10 @@ import Main.CTO.Game;
 public interface GuessingGameServiceLayer {
     String createAnswer();//creates 4 digit number user random number and find way to have no repeating numbers
     
-    void compareResults(String guess);//setting e and p
+    boolean compareResults(int id, String guess);//setting e and p
     
     Game addGame(int id, Game game);
     
     Game deleteGame(int id);
+
 }
