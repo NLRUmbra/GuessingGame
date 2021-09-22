@@ -18,7 +18,12 @@ public class Game {
     private boolean finished;
     
     private List<Round> listOfRounds;
-
+    
+    public Game() {
+        finished = false;
+        this.listOfRounds = new ArrayList<>();
+    }
+    
     public List<Round> getListOfRounds() {
         return listOfRounds;
     }
@@ -28,12 +33,13 @@ public class Game {
         
     }
 
-
-    public Game() {
-        finished = false;
-        this.listOfRounds = new ArrayList<>();
+    public Round getLastRound(){
+        if (this.listOfRounds.size()>0){
+            return this.listOfRounds.get(listOfRounds.size()-1);
+        }else{
+            return null;
+        }
     }
-
     public int getId() {
         return id;
     }

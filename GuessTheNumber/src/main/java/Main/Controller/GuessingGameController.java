@@ -8,9 +8,13 @@ package Main.Controller;
 import Main.CTO.Game;
 import Main.CTO.Round;
 import Main.Dao.GuessingGameDao;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,16 +43,23 @@ public class GuessingGameController {
         return newGame;
     }
     
-    @PostMapping("/guess")
-    public Round guess(@RequestBody int gameId, @RequestBody String g){
+    @PostMapping("/guess/{gameId}")
+        public Round guess(@PathVariable int gameId, @RequestBody String g){
+        
+        //System.out.println(gameId);
         Game thisGame = dao.findById(gameId);
         if (compareResults(thisGame,g)){
             thisGame.setFinished(true);
         }
-        return thisGame.getListOfRounds().get(gameId)
+        return thisGame.getLastRound();
+//    return null;
     }
     
-
+    @GetMapping("/game")
+    public List<Game> getGames(){
+        return dao.getAll();
+    }
+    
 
     public String createAnswer(){
         HashSet<Integer> set=new HashSet();  
@@ -69,6 +80,8 @@ public class GuessingGameController {
         //{e,p}
         int[] result = {0,0};
         String localAnswer = game.getAnswer();
+        System.out.println(guess);
+        System.out.println(localAnswer);
         for (int i = 0 ; i < localAnswer.length();i++){
             int position = localAnswer.indexOf(guess.charAt(i));
             if (position != -1){
@@ -83,6 +96,8 @@ public class GuessingGameController {
         
         Round newRound = new Round(result[0],result[1],guess);
         game.addRound(newRound);
+        
+        System.out.println(Arrays.toString(result));
         
         if (result[0] == 4){
             return true;
